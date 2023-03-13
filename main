@@ -1,0 +1,45 @@
+# Import the required modules
+import time
+
+# Define a function to ask the user a question and return their answer
+def ask_question(question):
+    while True:
+        answer = input(question).strip().lower()
+        if answer:
+            return answer
+
+# Define the decision tree for recommending a drink
+def recommend_drink():
+    # Ask the user if they want an alcoholic drink
+    alcohol = ask_question("Do you want an alcoholic drink? (yes/no): ")
+    if alcohol == "yes":
+        # Ask the user what type of alcohol they prefer
+        liquor = ask_question("Do you prefer beer, wine, or spirits? ").split()[0]
+        if liquor == "beer":
+            return "You should have a beer."
+        elif liquor == "wine":
+            return "You should have a glass of wine."
+        else:
+            mixer = ask_question("Do you want a mixer with your spirits? (yes/no): ")
+            if mixer == "yes":
+                return "You should have a mixed drink."
+            else:
+                return "You should have a straight-up shot."
+    else:
+        # Ask the user if they want a hot or cold drink
+        temperature = ask_question("Do you want a hot or cold drink? ").split()[0]
+        if temperature == "hot":
+            return "You should have a cup of tea or coffee."
+        else:
+            soda = ask_question("Do you want a soda or juice? ").split()[0]
+            if soda == "soda":
+                return "You should have a soda."
+            else:
+                return "You should have a glass of juice."
+
+# Call the recommend_drink() function and print the result
+print("Welcome to the drink recommendation AI!")
+time.sleep(1)
+print("I will ask you a few questions to find out what drink you should have.")
+time.sleep(1)
+print(recommend_drink())
